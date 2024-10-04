@@ -24,3 +24,15 @@ class CreateUserHandler(AbstractHandler[CreateUserRequest, CreateUserResponse]):
 
 response = await registry.dispatch(CreateUserRequest)
 ```
+# TODO:
+* Abstract/DRY CI/CD
+* Auto version bumping in CI/CD based on commit message using `poetry version <option>`
+* Tests
+* Test coverage and coverage comment on PR
+* Coverage badge
+* build badge
+* license badge
+* pypi badge
+* README
+* FastAPI example
+* FastAPI cookiecutter?
