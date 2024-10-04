@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 TRequest = TypeVar("TRequest", bound="AbstractRequest")
 TResponse = TypeVar("TResponse", bound="AbstractResponse")
-THandler = TypeVar("THandler", bound="AbstractHandler['TRequest', 'TResponse']")
+THandler = TypeVar("THandler", bound="AbstractHandler[TRequest, TResponse]")
 
 
 class AbstractRequest(BaseModel):
