@@ -29,6 +29,8 @@ jobs:
           strip_v: true
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -38,16 +40,15 @@ jobs:
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
-      - name: Set Version
-        run: poetry version ${{ steps.tag.outputs.tag }}
-      - name: Sync Version
-        run: |
-          poetry version ${{ steps.tag.outputs.tag }}
-          git config --local user.email "auto@auto.com"
-          git config --local user.name "Auto"
-          git add pyproject.toml
-          git commit -m "Sync version with tag"
-          git push origin main
+      # TODO: would be nice to automatically set the version and commit it to main / tag
+      # - name: Set Version
+      #   run: poetry version ${{ steps.tag.outputs.tag }}
+      - name: Get current version
+        id: current_version
+        run: echo "current_version=$(poetry version --short)" >> $GITHUB_OUTPUT
+      - name: Check Version Match
+        if: steps.tag.outputs.tag != steps.current_version.outputs.CURRENT_VERSION
+        run: echo "version tag is NOT alined" && exit 1
       - name: Install library
         run: poetry install --no-interaction --with dev
       - name: Test with pytest
