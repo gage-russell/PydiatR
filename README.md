@@ -22,5 +22,5 @@ class CreateUserHandler(AbstractHandler[CreateUserRequest, CreateUserResponse]):
         print(f"Creating user: {request.username} with email: {request.email}")
         return CreateUserResponse(success=True)
 
-response = registry.dispatch(CreateUserRequest)
+response = await registry.dispatch(CreateUserRequest)
 ```
