@@ -1,4 +1,5 @@
-[![python-package](https://github.com/gage-russell/PydiatR/actions/workflows/python-package.yml/badge.svg)](https://github.com/gage-russell/PydiatR/actions/workflows/python-package.yml)
+[![python-package](https://github.com/gage-russell/PydiatR/actions/workflows/python-package.yaml/badge.svg)](https://github.com/gage-russell/PydiatR/actions/workflows/python-package.yaml)
+[![python-publish](https://github.com/gage-russell/PydiatR/actions/workflows/python-publish.yaml/badge.svg)](https://github.com/gage-russell/PydiatR/actions/workflows/python-publish.yaml)
 [![pypi](https://img.shields.io/pypi/v/pydiatr)](https://pypi.org/project/pydiatr/)
 [![license](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](https://raw.githubusercontent.com/gage-russell/pydiatr/main/LICENSE)
 # PydiatR
