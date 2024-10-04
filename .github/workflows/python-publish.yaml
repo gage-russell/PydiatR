@@ -22,6 +22,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1
+        with:
+          strip_v: true
       - name: Check out repository
         uses: actions/checkout@v4
       - name: Set up Python
@@ -33,6 +38,16 @@ jobs:
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
+      - name: Set Version
+        run: poetry version ${{ steps.tag.outputs.tag }}
+      - name: Sync Version
+        run: |
+          poetry version ${{ steps.tag.outputs.tag }}
+          git config --local user.email "auto@auto.com"
+          git config --local user.name "Auto"
+          git add pyproject.toml
+          git commit -m "Sync version with tag"
+          git push origin main
       - name: Install library
         run: poetry install --no-interaction --with dev
       - name: Test with pytest
